@@ -75,7 +75,7 @@ class ListGemsCommand(sublime_plugin.WindowCommand):
                 CFRelease(url)
             return self.app_path_mac.decode() + '/Contents/SharedSupport/bin/subl'
         if sublime.platform() == 'linux':
-            return open('/proc/self/cmdline').read().split(chr(0))[0]
+            return open('/proc/self/cmdline').read().replace("plugin_host", "sublime_text").split(chr(0))[0]
         return sys.executable
 
     def run_subprocess(self, command):
